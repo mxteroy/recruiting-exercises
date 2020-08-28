@@ -10,7 +10,7 @@ Attributes:
 class Warehouse:
 
     # This function initializes the attributes (_name, _inventory) of the class
-    # @param order - type Dict[string, integer]
+    # @param warehouse_dict - type Dict[string, Any]
     # returns nothing
     def __init__(self, warehouse_dict: Dict[str, Any]):
         self._name = warehouse_dict['name']
