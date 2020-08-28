@@ -1,5 +1,17 @@
+from typing import Dict, List, Any
+
+'''
+This class represents a warehouse
+
+Attributes:
+    1. name - the name of the warehouse
+    2. inventory - the dictionary that contains the item name (key) and its quantity (value)
+'''
 class Warehouse:
-    
-    def __init__(self, warehouseObj):
-        self.name = warehouseObj['name']
-        self.inventory = warehouseObj['inventory']
+
+    # This function initializes the attributes (_name, _inventory) of the class
+    # @param order - type Dict[string, integer]
+    # returns nothing
+    def __init__(self, warehouse_dict: Dict[str, Any]):
+        self._name = warehouse_dict['name']
+        self._inventory = warehouse_dict['inventory']

@@ -26,8 +26,9 @@ class InventoryAllocator:
         self._order = order
         self._warehouses = []
 
-        for warehouseObj in warehouses:
-            self._warehouses.append(Warehouse(warehouseObj))
+        #Fill the _warehouses attribute with Warehouse objects
+        for warehouse_dict in warehouses:
+            self._warehouses.append(Warehouse(warehouse_dict))
 
     # This function uses the attributes of its parent class to calculate the most optimal shipment goods
     # returns List[Dict[string, Any]]
@@ -56,12 +57,12 @@ class InventoryAllocator:
         for warehouse in warehouses:
             #the current shipment of items that warehouses can provide for the orders
             warehouse_shipment = {} 
-            warehouse_shipment[warehouse.name] = dict()
+            warehouse_shipment[warehouse._name] = dict()
             
             #keeps track of the number of items the warehouse can fulfill from the original, unmodified order
             origin_items_fulfilled = 0 
 
-            for item, stock in warehouse.inventory.items():
+            for item, stock in warehouse._inventory.items():
                 #if an item in the warehouse inventory is not wanted in the order, then move to the next item
                 if item not in order:
                     continue
@@ -75,22 +76,22 @@ class InventoryAllocator:
                     #if warehouse' stock is less than the order's request for that item, that means the warehouse will run out of that item to provide for the order
                     if stock < order[item]: 
                         order[item] -= stock
-                        warehouse.inventory[item] = 0
+                        warehouse._inventory[item] = 0
                     #if warehouse' stock is greater than or equal to the order's request for that item, then that means the one item request on the order has been fulfilled
                     else:
-                        warehouse.inventory[item] -= order[item]
+                        warehouse._inventory[item] -= order[item]
                         order[item] = 0
                         order_items_fulfilled += 1
 
                     #save the item name and the quantity that the warehouse can provide
-                    warehouse_shipment[warehouse.name][item] = stock - warehouse.inventory[item]
+                    warehouse_shipment[warehouse._name][item] = stock - warehouse._inventory[item]
             
             #if current warehouse can fully fulfill the order, return original order with the warehouse's name
             if origin_items_fulfilled == len(origin_order):
-                return [{warehouse.name: origin_order}]
+                return [{warehouse._name: origin_order}]
 
             #if the current warehouse can provide some items for the shipments, then append those items to the resultant list
-            if len(warehouse_shipment[warehouse.name]) > 0:
+            if len(warehouse_shipment[warehouse._name]) > 0:
                 order_shipment.append(warehouse_shipment)
 
         #sort alphabetically by warehouse name
