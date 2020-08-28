@@ -1,6 +1,6 @@
 ## Running the program
   1. go to `src` folder
-  2.Run using with command
+  2. Run using with command
     ```
     python TestInventoryAllocator.py
     ```
