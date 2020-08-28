@@ -1,5 +1,9 @@
-
-
+## Running the program
+  1. go to `src` folder
+  2.Run using with command
+    ```
+    python TestInventoryAllocator.py
+    ```
 ## Problem
 
 The problem is compute the best way an order can be shipped (called shipments) given inventory across a set of warehouses (called inventory distribution). 
