@@ -1,5 +1,5 @@
 ## Running the program
-  1. Run using with command
+  1. Run using command
     ```
     python TestInventoryAllocator.py
     ```
