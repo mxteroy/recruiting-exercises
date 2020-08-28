@@ -5,8 +5,6 @@ from Warehouse import Warehouse
 
 #goal: produce cheapest shipment given the orders and warehouses' inventory
 
-#TODO: more descriptive comments
-
 '''
 This class provides the functions to find the cheapest shipments given an inventory distribution
 Methods:
